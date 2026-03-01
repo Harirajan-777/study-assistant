@@ -1,11 +1,11 @@
 from dotenv import load_dotenv
 load_dotenv()
+import os
+import streamlit as st
 
 if "GOOGLE_API_KEY" in st.secrets:
     os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 
-import os
-import streamlit as st
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.vectorstores import Chroma
