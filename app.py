@@ -3,14 +3,14 @@ load_dotenv()
 import os
 import streamlit as st
 
-if "GOOGLE_API_KEY" in st.secrets:
-    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
+if "GROQ_API_KEY" in st.secrets:
+    os.environ["GROQ_API_KEY"] = st.secrets["GROQ_API_KEY"]
 
 if not os.path.exists("anat_vector_db"):
     st.info("Building vector database for first time...")
     from ingest import run_ingestion
     run_ingestion()
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
 from langchain_community.vectorstores import Chroma
 
 # ✅ Modern HuggingFace embeddings (no quota issues)
@@ -37,10 +37,11 @@ class OrthoChatbot:
         )
 
         # ✅ Gemini LLM for answering
-        self.llm = ChatGoogleGenerativeAI(
-            model="gemini-2.5-flash",
-            temperature=0.2
-        )
+        self.llm = ChatGroq(
+    model="llama-3.3-70b-versatile",  # 🔥 Best quality
+    temperature=0.2,
+    groq_api_key=os.getenv("GROQ_API_KEY")
+)
 
     def get_rag_chain(self):
         """Creates and returns the Retrieval-Augmented Generation chain."""
