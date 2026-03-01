@@ -6,7 +6,10 @@ import streamlit as st
 if "GOOGLE_API_KEY" in st.secrets:
     os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 
-
+if not os.path.exists("anat_vector_db"):
+    st.info("Building vector database for first time...")
+    from ingest import run_ingestion
+    run_ingestion()
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_community.vectorstores import Chroma
 
