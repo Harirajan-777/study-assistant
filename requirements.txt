@@ -1,0 +1,11 @@
+streamlit
+langchain
+langchain-community
+langchain-core
+langchain-google-genai
+langchain-huggingface
+sentence-transformers
+chromadb
+pypdf
+python-dotenv
+numpy<2
