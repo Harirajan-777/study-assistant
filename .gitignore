@@ -1,0 +1,17 @@
+# Virtual environment
+shru/
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Chroma / vector DB
+anat_vector_db/
+vector_dbs/
+
+# dotenv
+.env
+
+# Mac files
+.DS_Store
