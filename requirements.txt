@@ -10,3 +10,4 @@ pypdf
 python-dotenv
 numpy<2
 pymupdf
+cryptography>=3.1
