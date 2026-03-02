@@ -9,4 +9,4 @@ chromadb
 pypdf
 python-dotenv
 numpy<2
-pypdf
+pymupdf
