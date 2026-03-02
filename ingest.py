@@ -9,7 +9,7 @@ print("GOOGLE_API_KEY found:", "YES" if os.getenv("GOOGLE_API_KEY") else "NO")
 
 
 import os
-from langchain_community.document_loaders import PyPDFLoader, DirectoryLoader
+from langchain_community.document_loaders import PyMuPDFLoader, DirectoryLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
@@ -31,7 +31,7 @@ def run_ingestion():
         return
 
     print("📚 Loading  PDFs...")
-    loader = DirectoryLoader(BOOKS_DIR, glob="./*.pdf", loader_cls=PyPDFLoader)
+    loader = DirectoryLoader(BOOKS_DIR, glob="./*.pdf", loader_cls=PyMuPDFLoader)
     documents = loader.load()
     
     if not documents:
